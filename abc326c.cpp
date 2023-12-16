@@ -1,21 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// TLEになったので書き直し中
-// 現段階ではエラって無理
-// 解答を読むと尺取り法か二部探索と書いてあった。尺取り法を使って実装してみたい
 int main() {
     int n, m;
     cin >> n >> m;
-    vector<int> a(n);
+
+    vector<long long int> a(n);
     for (int i = 0; i < n; ++i) cin >> a.at(i);
-
     sort(a.begin(), a.end());
-    vector<int> x(1000000000, 0);
-    for (int i = 0; i < a.size(); ++i) {
-        x.at(a.at(i))++;
-    }
-    for (int i = 0; i < a.size(); ++i) cout << x.at(i) << endl;
 
+    long long int mx = 0;
+    for (int i = 0; i < n; ++i) {
+        long long int l = a.at(i);
+        long long int r = a.at(i) + m;
+        auto iter1 = lower_bound(a.begin(), a.end(), l);
+        auto iter2 = upper_bound(a.begin(), a.end(), r-1);
+        long long int dist = iter2 - iter1;
+        mx = max(mx, dist);
+    }
+    cout << mx << endl;
     return 0;
 }
