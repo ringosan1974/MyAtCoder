@@ -13,7 +13,6 @@ int main() {
     }
     int all = s;
     int mid = (all+1)/2;
-    int a, b;
     // vectorの at(i-1) と at(i) を比較すると、もれ・だぶりが起こりやすいかもしれない
     // できるだけそういうコードは控えたい
     for (int i = 0; i < m; ++i) {
