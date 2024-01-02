@@ -28,7 +28,6 @@ int main() {
         while (r[i] < n && d[r[i]+1] - d[i] <= k) {
             ++r[i];
         }
-        cout << r[i] << endl;
     }
 
     ll ans = 0;
